@@ -8,7 +8,8 @@ import axios from 'axios';
 
 
 
-const SignupForm = ({setIsLoggedIn}) => {
+const SignupForm = (props) => {
+ const  setIsLoggedIn= props.setIsLoggedIn;
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -23,6 +24,7 @@ const SignupForm = ({setIsLoggedIn}) => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [accountType, setAccountType] = useState("student")
     
     
 
@@ -47,13 +49,15 @@ const SignupForm = ({setIsLoggedIn}) => {
         setIsLoggedIn(true);
         toast.success("Account Created");
         const accountData = {
-            ...formData
-        };
+            ...formData  , accountType
+          }
+          // const accountData2 ={
+          //   accountData, accountType
+          // }
+          
+          console.log(accountData);
 
-        console.log("printing Final account data ");
-      
-
-        navigate("/dashboard");
+        // navigate("/dashboard");
 
     }
     
@@ -61,6 +65,28 @@ const SignupForm = ({setIsLoggedIn}) => {
 
   return (
     <div>
+      <div className="flex bg-gray-900 rounded-full text-white w-fit p-1 mb-4">
+        <button
+          onClick={() => setAccountType("Seller")}
+          className={`${
+            accountType === "seller"
+              ? "bg-black text-white"
+              : "bg-gray-900 text-gray-700"
+          } py-2 px-5 rounded-full transition-all duration-200`}
+        >
+          Seller
+        </button>
+        <button
+          onClick={() => setAccountType("Buyer")}
+          className={`${
+            accountType === "Buyer"
+              ? "bg-black text-white"
+              : "bg-gray-900 text-gray-700"
+          } py-2 px-5 rounded-full transition-all duration-200`}
+        >
+          Buyer
+        </button>
+      </div>
       <form onSubmit={submitHandler}>
         {/* first name and lastName */}
         <div className="flex gap-x-4 mt-[20px]">

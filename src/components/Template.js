@@ -3,12 +3,17 @@ import frameImage from "../assets/frame.png";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
 import { FcGoogle } from "react-icons/fc";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Template = ({ title, desc1, desc2, image, formtype, setIsLoggedIn }) => {
   // console.log("ye rha mera form type");
   // console.log(formtype)
+  const navigate = useNavigate();
+  function moveToSignup(){
+    navigate('/signup');
+  }
   return (
-    <div className="flex justify-between w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0">
+    <div className="flex justify-center w-full py-12 mx-auto gap-x-12 gap-y-0 bg-[#062f4f]">
       <div className="w-11/12 max-w-[500px]">
         <h1 className="text-richblack-5 font-semibold text-[1.875rem] leading-[2.375rem]">
           {title}
@@ -33,22 +38,34 @@ const Template = ({ title, desc1, desc2, image, formtype, setIsLoggedIn }) => {
         </div>
 
         <button
-          className="w-full flex justify-center items-center rounded-[8px] font-medium text-richblack-100
-            border border-richblack-700 bg-white px-[12px] py-[8px] gap-x-2 mt-6 "
+          className="w-full flex justify-evenly items-center rounded-[8px] font-medium text-richblack-100
+            border border-richblack-700 bg-white px-[12px] py-[8px]  mt-6 "
         >
           <FcGoogle />
           <p>Sign Up with Google</p>
         </button>
+        <div>
+          {formtype === "login" && (
+            <div className="mx-auto">
+              <span className="text-blue-100 italic">
+                Don't have an account?
+              </span>
+              <button onClick={moveToSignup} className="text-blue-100 italic">
+                Sign Up Now!
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
-      <div className="relative w-11/12 max-w-[400px] ">
-        <img
+      <div className="relative w-11/12 max-w-[500px] mt-24 ">
+        {/* <img
           src={frameImage}
           alt="Pattern"
-          width={558}
-          height={504}
+          width={458}
+          height={404}
           loading="lazy"
-        />
+        /> */}
 
         <img
           src={image}

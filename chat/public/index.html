@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat app</title>
+    <style>
+        body{
+            margin: 0;
+            padding-bottom: 3rem;
+        }
+        #newmsg{
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin : 0.25rem;
+        }
+        #newmsg:focus{
+            outline: none;
+        }
+        #msglist{
+            list-style-type: none ;
+            margin: 0;
+            padding: 0;
+        }
+        #msglist>li{
+            padding: 0.5rem 1rem;
+        }
+        #msglist>li:nth-child(odd){
+            background: #efefef;
+        }
+        #btn{
+            background: #333;
+            /* border: none; */
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 3px;
+            outline: none;
+            color: #fff;
+        }
+        #form{
+            background: rgba(0,0,0,0.15);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat</h1>
+    <!-- <input type = "text" id="newmsg"> -->
+    <ul id="msglist"></ul>
+    <div id="form">
+    
+    <input type = "text" id="newmsg" autocomplete="off">
+    <button id = "btn" >Send</button>
+
+</div>
+
+
+
+    <!-- <ul id="msglist"></ul> -->
+    <script src = "/socket.io/socket.io.js"></script>
+    <script src = "script.js"></script>
+</body>
+</html>
